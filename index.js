@@ -1,31 +1,29 @@
 // index.js
+const path = require('path');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// serve a simple homepage
+
+// serve static assets from /public
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+// root: send index.html
 app.get('/', (req, res) => {
-  res.send(`
-    <html>
-      <head><meta charset="utf-8"><title>Yuktigenesis Demo</title></head>
-      <body>
-        <h1>Hello from Yuktigenesis!</h1>
-        <p>Dynamic server time: ${new Date().toLocaleString()}</p>
-        <p>Try the API: <a href="/api/message">/api/message</a></p>
-      </body>
-    </html>
-  `);
+res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// a small dynamic JSON API endpoint
+
+// small dynamic JSON API endpoint
 app.get('/api/message', (req, res) => {
-  res.json({
-    message: 'Hello — this is a dynamic response from Yuktigenesis!',
-    time: new Date().toISOString()
-  });
+res.json({
+message: "Hello — this is a dynamic response from Yuktigenesis!",
+time: new Date().toISOString()
+});
 });
 
-// start server
+
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+console.log(`Server listening on http://localhost:${port}`);
 });

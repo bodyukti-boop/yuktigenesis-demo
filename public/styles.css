@@ -1,0 +1,61 @@
+:root{
+--bg1: linear-gradient(135deg,#0f172a 0%,#0b1220 40%,#07263a 100%);
+--card: rgba(255,255,255,0.06);
+--glass: rgba(255,255,255,0.04);
+--accent: #7c3aed;
+--accent-2: #06b6d4;
+--radius: 14px;
+--fw-bold: 700;
+}
+
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body,#root{height:100%}
+body{
+font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+background:var(--bg1);
+color:#e6eef8;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+}
+
+
+.container{
+max-width:980px;margin:48px auto;padding:28px;position:relative;z-index:2;
+}
+.brand{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.logo{font-size:28px;letter-spacing:1px}
+.subtitle{color:rgba(230,238,248,0.7)}
+
+
+.card{background:var(--card);backdrop-filter: blur(6px);border-radius:var(--radius);padding:20px;margin-bottom:18px;box-shadow:0 6px 20px rgba(2,6,23,0.6);}
+.intro h2{font-size:20px;margin-bottom:8px}
+.lead{color:rgba(230,238,248,0.85);margin-bottom:12px}
+.actions{display:flex;gap:12px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(124,58,237,0.18);transform:translateY(0);transition:transform .18s ease,box-shadow .18s}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(6,182,212,0.12)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);color:inherit}
+
+
+.details ul{margin:12px 0 0 18px}
+.api-box{margin-top:12px;padding:12px;background:var(--glass);border-radius:10px}
+
+
+.footer{margin-top:8px;color:rgba(230,238,248,0.55)}
+
+
+/* decorative blobs */
+.decor{pointer-events:none;position:fixed;inset:0;z-index:1}
+.blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:0.8;mix-blend-mode:screen}
+.b1{width:420px;height:420px;left:-120px;top:-60px;background:radial-gradient(circle at 20% 30%,#7c3aed 0%,#0b1220 60%);animation:float1 8s ease-in-out infinite}
+.b2{width:300px;height:300px;right:-80px;bottom:-60px;background:radial-gradient(circle at 60% 40%,#06b6d4 0%,#07263a 60%);animation:float2 10s ease-in-out infinite}
+.b3{width:220px;height:220px;left:40%;top:60%;background:radial-gradient(circle at 30% 20%,#f97316 0%,#07263a 60%);animation:float3 12s ease-in-out infinite}
+
+
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(18px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes float3{0%,100%{transform:translateY(0)}50%{transform:translateY(12px)}}
+
+
+/* small responsive tweaks */
+@media (max-width:640px){.container{margin:18px;padding:18px}.logo{font-size:20px}.decor{display:none}}
